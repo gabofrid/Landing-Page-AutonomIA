@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutonomIA – Dándole seguridad a cada uno de tus pasos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Barra superior -->
+  <header class="topbar">
+    <section class="brand-band" aria-hidden="true"></section>
+    <div class="container topbar__content">
+      <nav class="nav">
+        <a href="#quienes">¿Quiénes somos?</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="sold">
+        <span>Productos vendidos:</span>
+        <strong id="soldCount">0</strong>
+      </div>
+    </div>
+  </header>
+
+  <!-- ¿Quiénes somos? -->
+  <section id="quienes" class="section">
+    <div class="container">
+      <h2 class="section__title">¿Quiénes somos?</h2>
+      <p class="lead">
+        Somos un grupo de estudiantes de quinto año de ORT Argentina. Desde el
+        espacio <strong>Empatizando</strong> desarrollamos un proyecto de impacto social
+        orientado a <strong>personas no videntes</strong>.
+      </p>
+
+      <div class="about">
+        <div class="about__photo" aria-label="Foto del equipo">
+          <img src="team.jpg" alt="Nuestro equipo" onerror="this.style.display='none'"/>
+        </div>
+        <ul class="about__list">
+          <li>Reconocimiento de voz offline</li>
+          <li>YOLOv8 + EasyOCR</li>
+          <li>Accesibilidad Primero</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="section section--light">
+    <div class="container">
+      <h2 class="section__title">Contacto</h2>
+      <form id="contactForm" class="form">
+        <input class="field" type="text" name="nombre" placeholder="Nombre" required />
+        <input class="field" type="email" name="email" placeholder="Email" required />
+        <textarea class="field" name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+        <button class="btn btn--dark" type="submit">Enviar</button>
+        <p class="note">*Es de prueba, no tomamos realmente los datos.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © <span id="year"></span> AutonomIA — ORT Argentina
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
