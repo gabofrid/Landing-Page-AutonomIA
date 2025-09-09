@@ -7,18 +7,33 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<!--Portada-->
+<section id="intro" class="hero">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <h1 class="hero__title">AutonomIA</h1>
+      <p class="hero__subtitle">“Dándole seguridad a cada uno de tus pasos”</p>
+    </div>
+    <div class="hero__image">
+      <img src="foto-sin-fondo.png" alt="foto-sin-fondo">
+    </div>
+  </div>
+</section>
+
   <!-- Barra superior -->
   <header class="topbar">
-    <section class="brand-band" aria-hidden="true"></section>
     <div class="container topbar__content">
-      <nav class="nav">
+      <nav class="nav" aria-label="Principal">
         <a href="#quienes">¿Quiénes somos?</a>
         <a href="#equipo">Equipo</a>
+        <a href="#hacemos">¿Qué hacemos?</a>
+        <a href="#redes">Redes</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <div class="sold">
+      <!-- Contador con Vue -->
+      <div class="sold" id="counterApp">
         <span>Productos vendidos:</span>
-        <strong id="soldCount">0</strong>
+        <strong>{{ count }}</strong>
       </div>
     </div>
   </header>
@@ -33,21 +48,89 @@
         orientado a <strong>personas no videntes</strong>.
       </p>
 
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section id="equipo" class="section section--light">
+    <div class="container">
+      <h2 class="section__title">Equipo</h2>
       <div class="about">
         <div class="about__photo" aria-label="Foto del equipo">
           <img src="ImagenEquipo.png" alt="Nuestro equipo" onerror="this.style.display='none'"/>
         </div>
         <ul class="about__list">
-          <li>A la izquierda <strong> Lauti Hernandéz </strong>(Hardware)</li>
-          <li><strong> Gaby Fridman y Santi D'Alessandro </strong> en el medio (Programadores IA)</li>
-          <li><strong> Miriam Shurklaper </strong> a la derecha (Diseño UX)</li>
+          <li>A la izquierda <strong>@lautihern_</strong> (Hardware)</li>
+          <li><strong>@gabriel_fridman</strong> y <strong>@santi.dales</strong> en el medio (Programadores IA)</li>
+          <li><strong>@miri.shur_</strong> a la derecha (Diseño UX)</li>
         </ul>
       </div>
     </div>
   </section>
 
+ <!-- ¿Qué hacemos? -->
+<section id="hacemos" class="section">
+  <div class="container">
+    <h2 class="section__title">¿Qué hacemos?</h2>
+    <div class="about">
+      <div>
+        <p class="lead">
+          Desarrollamos <strong> tecnología accesible</strong> para <strong> aportar autonomía y seguridad a personas no videntes</strong>
+        </p>
+        <ul class="about__list">
+          <li>Detección de objetos en tiempo real.</li>
+          <li>Lectura de texto (OCR) activada por voz, sin internet.</li>
+          <li>Diseño y pruebas con foco en accesibilidad.</li>
+        </ul>
+      </div>
+      <div class="about__photo" aria-label="Imagen de qué hacemos">
+        <img src="QueHacemos.jpg" alt="Qué hacemos" onerror="this.style.display='none'"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Redes -->
+<section id="redes" class="section section--light">
+  <div class="container">
+    <h2 class="section__title">Redes</h2>
+    <div class="redes-grid">
+      <!-- Reel -->
+      <div class="redes__video">
+        <iframe 
+          src="https://www.instagram.com/reel/DMTROUqyQ71/embed"
+          width="320" height="480"
+          frameborder="0"
+          scrolling="no"
+          allowtransparency="true"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="redes__info">
+        <p class="lead">Seguinos :)</p>
+        <ul class="social-list">
+          <li>
+            <img src="icon-instagram.png" alt="Instagram" class="icon"/>
+            <a href="https://www.instagram.com/autonomia.oficial?igsh=MXE0Zm9jb2hkdnYwbg==" target="_blank">@autonomia.oficial</a>
+          </li>
+          <li>
+            <img src="icon-x.png" alt="X" class="icon"/>
+            <a href="https://x.com/autonomia.oficial" target="_blank">@autonomia.oficial</a>
+          </li>
+          <li>
+            <img src="icon-tiktok.png" alt="TikTok" class="icon"/>
+            <a href="https://tiktok.com/@autonomia.ok" target="_blank">@autonomia.ok</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
   <!-- Contacto -->
-  <section id="contacto" class="section section--light">
+  <section id="contacto" class="section">
     <div class="container">
       <h2 class="section__title">Contacto</h2>
       <form id="contactForm" class="form">
@@ -60,10 +143,26 @@
     </div>
   </section>
 
-  <footer class="footer">
-    © <span id="year"></span> AutonomIA — ORT Argentina
+  <!-- Footer con Vue -->
+  <footer class="footer" id="footerApp">
+    <div class="container footer__grid">
+      <a href="https://instagram.com/autonomia.oficial" target="_blank" class="footer__item">
+        <img src="icon-instagram.png" alt="Instagram" class="icon"/>
+        <span>@autonomia.oficial</span>
+      </a>
+
+      <div class="footer__item center">
+        © <span>{{ year }}</span> AutonomIA – ORT Argentina
+      </div>
+
+      <a href="mailto:autonomia.oficial2025@gmail.com" class="footer__item">
+        <img src="icon-mail.png" alt="Email" class="icon"/>
+        <span>autonomia.oficial2025@gmail.com</span>
+      </a>
+    </div>
   </footer>
 
+  <script src="https://unpkg.com/vue@3"></script>
   <script src="main.js"></script>
 </body>
 </html>

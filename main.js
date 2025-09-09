@@ -1,26 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Año en el footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const { createApp } = Vue;
 
-  // Contador "Productos vendidos"
-  const target = 999;
-  const duration = 6000;
-  const startTime = performance.now();
-  const soldEl = document.getElementById('soldCount');
+  // Contador "Productos vendidos" con Vue
+  createApp({
+    data() {
+      return {
+        count: 0,
+        target: 999,
+        duration: 6000
+      };
+    },
+    mounted() {
+      let start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / this.duration);
+        this.count = Math.floor(this.target * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+  }).mount('#counterApp');
 
-  function animate(now){
-    const t = Math.min(1, (now - startTime) / duration);
-    const value = Math.floor(target * (1 - Math.pow(1 - t, 3))); // esto es para que arranque lento y después vaya acelerando
-    soldEl.textContent = value.toLocaleString('es-AR');
-    if(t < 1) requestAnimationFrame(animate);
-  }
-  requestAnimationFrame(animate);
+  // Footer con Vue
+  createApp({
+    data() {
+      return {
+        year: new Date().getFullYear()
+      };
+    }
+  }).mount('#footerApp');
 
   // Respuesta al form
   const form = document.getElementById('contactForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('¡Gracias! Nos Pondremos en contacto (MENTIRA)');
+    alert('¡Gracias! Nos pondremos en contacto (MENTIRA)');
     form.reset();
   });
 });
