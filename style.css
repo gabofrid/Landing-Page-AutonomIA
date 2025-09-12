@@ -234,3 +234,7 @@ img{ max-width:100%; height:auto; display:block; }
   .hero__image{ text-align: center; }
   .hero__image img{ max-width: 300px; }
 }
+
+html {
+  scroll-behavior: smooth;
+}
