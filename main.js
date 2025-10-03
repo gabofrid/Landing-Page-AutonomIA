@@ -38,3 +38,38 @@ document.addEventListener('DOMContentLoaded', () => {
     form.reset();
   });
 });
+
+// animación que se vaya escribiendo
+const text = `Somos un grupo de estudiantes de quinto año de ORT Argentina. Desde el
+espacio Empatizando desarrollamos un proyecto de impacto social
+orientado a personas no videntes.`;
+
+const element = document.getElementById("typing-text");
+let index = 0;
+let hasTyped = false;
+
+function type() {
+  if (index < text.length) {
+    element.innerHTML += text.charAt(index);
+    element.classList.add("typing");
+    index++;
+    setTimeout(type, 30);
+  } else {
+    element.classList.remove("typing");
+  }
+}
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !hasTyped) {
+      hasTyped = true;
+      type();
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+const section = document.getElementById("quienes");
+observer.observe(section);
